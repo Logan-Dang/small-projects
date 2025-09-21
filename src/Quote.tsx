@@ -51,7 +51,7 @@ export default function Quote() {
         </div>
       </a>
 
-      <button onClick={(e) => refresh()}>Refresh Quote</button>
+      <button onClick={() => refresh()}>Refresh Quote</button>
     </div>
   );
 }

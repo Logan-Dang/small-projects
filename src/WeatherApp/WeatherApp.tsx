@@ -1,0 +1,83 @@
+import { useState } from "react";
+import { FcHome } from "react-icons/fc";
+import { handleSearch, useWeather } from "./WeatherHandlers.tsx";
+import SearchDisplay from "./SearchDisplay.tsx";
+import { Link } from "react-router";
+
+export default function WeatherApp() {
+  const [city, setCity] = useState("San Diego");
+  const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
+  const [searchResults, setSearchResults] = useState<any[]>([]);
+
+  const weather = useWeather(city, API_KEY); // ✅ fetch handled in hook
+
+  return (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        padding: "20px",
+        minHeight: "100vh", // ✅ grows with content
+      }}
+    >
+      <h1>Weather App</h1>
+
+      <div style={{ position: "relative" }}>
+        <input
+          type="text"
+          placeholder="Search for city..."
+          onChange={(e) => handleSearch(e, setSearchResults, API_KEY)}
+          style={{
+            fontSize: "16px",
+            padding: "8px",
+            marginBottom: "10px",
+            width: "200px",
+          }}
+        />
+
+        <SearchDisplay
+          searchResults={searchResults}
+          setCity={setCity}
+          setSearchResults={setSearchResults}
+        />
+      </div>
+
+      <h3>
+        {weather.data?.location?.name}, {weather.data?.location?.region},{" "}
+        {weather.data?.location?.country}
+      </h3>
+
+      <div
+        style={{ display: "flex", gap: "16px", textDecoration: "underline" }}
+      >
+        <Link
+          to={`/weathertemp/${city}`}
+          style={{ fontSize: "25px", color: "white", marginBottom: "10px" }}
+        >
+          Temp
+        </Link>
+        <Link
+          to={`/weatherastro/${city}`}
+          style={{ fontSize: "25px", color: "white", marginBottom: "10px" }}
+        >
+          Astronomy
+        </Link>
+      </div>
+
+      <a href="/homepage" style={{ textDecoration: "none", color: "inherit" }}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            cursor: "pointer",
+          }}
+        >
+          <FcHome size={40} />
+          <span style={{ fontSize: "18px" }}>Home</span>
+        </div>
+      </a>
+    </div>
+  );
+}

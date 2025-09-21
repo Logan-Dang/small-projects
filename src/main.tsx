@@ -30,7 +30,7 @@ const queryClient = new QueryClient();
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
+      <BrowserRouter basename="/small-projects/">
         <Routes>
           <Route path="/" element={<App />} />
           <Route path="/length" element={<Todos4 />} />

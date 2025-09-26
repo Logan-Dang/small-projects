@@ -44,7 +44,7 @@ export default function WeatherWind() {
             Wind speed: {weather.data.current.wind_mph} mph /{" "}
             {weather.data.current.wind_kph} kph
           </p>
-          <p></p>
+          <p>Gust speed: {}</p>
           <WeatherLogo />
         </div>
       )}

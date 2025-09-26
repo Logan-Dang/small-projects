@@ -1,8 +1,9 @@
+import { TbArrowBackUp } from "react-icons/tb";
+import WeatherLogo from "./WeatherLogo.tsx";
 import { useParams } from "react-router";
 import { useWeather } from "./WeatherHandlers";
-import { TbArrowBackUp } from "react-icons/tb";
 
-export default function DisplayAstro() {
+export default function WeatherPrecip() {
   const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
   const { city } = useParams<{ city: string }>();
   const weather = useWeather(city ?? "San Diego", API_KEY);
@@ -16,10 +17,10 @@ export default function DisplayAstro() {
 
       {weather.status === "success" && (
         <div>
-          <h1>
+          <h2>
             {weather.data.location.name}, {weather.data.location.region},{" "}
             {weather.data.location.country}
-          </h1>
+          </h2>
           <a
             href="/weatherapp"
             style={{ textDecoration: "none", color: "inherit" }}
@@ -36,33 +37,21 @@ export default function DisplayAstro() {
               <span style={{ fontSize: "18px" }}>Back</span>
             </div>
           </a>
-
+          <p>Local Time Estimate: {weather.data.location.localtime}</p>
+          <p>Last Updated: {weather.data.current.last_updated}</p>
           <p>
-            🌅 Sunrise: {weather.data.forecast.forecastday[0].astro.sunrise}
+            💧 Chance of Rain:{" "}
+            {weather.data.forecast.forecastday[0].day.daily_chance_of_rain}%
           </p>
           <p>
-            🌅 Is the sun above the horizon:{" "}
-            {weather.data.forecast.forecastday[0].astro.is_sun_up == 0
-              ? "False"
-              : "True"}
-          </p>
-          <p>🌇 Sunset: {weather.data.forecast.forecastday[0].astro.sunset}</p>
-          <p>
-            🌙 Moonrise: {weather.data.forecast.forecastday[0].astro.moonrise}
+            Precipitation: {weather.data.current.precip_in} in. /{" "}
+            {weather.data.current.precip_mm} mm.
           </p>
           <p>
-            🌑 Moonset: {weather.data.forecast.forecastday[0].astro.moonset}
+            Chance of snow:{" "}
+            {weather.data.forecast.forecastday[0].hour[0].chance_of_snow}%
           </p>
-          <p>
-            🌑 Is the moon above the horizon:{" "}
-            {weather.data.forecast.forecastday[0].astro.is_moon_up == 0
-              ? "False"
-              : "True"}
-          </p>
-          <p>
-            🌑 Moon Phase:{" "}
-            {weather.data.forecast.forecastday[0].astro.moon_phase}
-          </p>
+          <WeatherLogo />
         </div>
       )}
     </div>

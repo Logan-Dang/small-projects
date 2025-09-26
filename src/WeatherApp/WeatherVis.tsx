@@ -1,8 +1,9 @@
 import { useParams } from "react-router";
 import { useWeather } from "./WeatherHandlers";
 import { TbArrowBackUp } from "react-icons/tb";
+import WeatherLogo from "./WeatherLogo.tsx";
 
-export default function DisplayAstro() {
+export default function WeatherVis() {
   const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
   const { city } = useParams<{ city: string }>();
   const weather = useWeather(city ?? "San Diego", API_KEY);
@@ -16,10 +17,10 @@ export default function DisplayAstro() {
 
       {weather.status === "success" && (
         <div>
-          <h1>
+          <h2>
             {weather.data.location.name}, {weather.data.location.region},{" "}
             {weather.data.location.country}
-          </h1>
+          </h2>
           <a
             href="/weatherapp"
             style={{ textDecoration: "none", color: "inherit" }}
@@ -36,33 +37,31 @@ export default function DisplayAstro() {
               <span style={{ fontSize: "18px" }}>Back</span>
             </div>
           </a>
-
+          <p>Local Time Estimate: {weather.data.location.localtime}</p>
+          <p>Last Updated: {weather.data.current.last_updated}</p>
           <p>
-            🌅 Sunrise: {weather.data.forecast.forecastday[0].astro.sunrise}
+            👀 Visibility distance in miles: {weather.data.current.vis_miles}
           </p>
           <p>
-            🌅 Is the sun above the horizon:{" "}
-            {weather.data.forecast.forecastday[0].astro.is_sun_up == 0
-              ? "False"
-              : "True"}
-          </p>
-          <p>🌇 Sunset: {weather.data.forecast.forecastday[0].astro.sunset}</p>
-          <p>
-            🌙 Moonrise: {weather.data.forecast.forecastday[0].astro.moonrise}
+            👀 Visibility distance in kilometers: {weather.data.current.vis_km}
           </p>
           <p>
-            🌑 Moonset: {weather.data.forecast.forecastday[0].astro.moonset}
+            ☀️ UV rays:{" "}
+            {weather.data.current.uv <= 2
+              ? "Low risk"
+              : weather.data.current.uv <= 5
+              ? "Moderate risk"
+              : weather.data.current.uv <= 7
+              ? "High risk"
+              : weather.data.current.uv <= 10
+              ? "Very high risk"
+              : "Extreme risk"}
           </p>
           <p>
-            🌑 Is the moon above the horizon:{" "}
-            {weather.data.forecast.forecastday[0].astro.is_moon_up == 0
-              ? "False"
-              : "True"}
+            Dew Point: {weather.data.current.dewpoint_f}°F /{" "}
+            {weather.data.current.dewpoint_c}°C
           </p>
-          <p>
-            🌑 Moon Phase:{" "}
-            {weather.data.forecast.forecastday[0].astro.moon_phase}
-          </p>
+          <WeatherLogo />
         </div>
       )}
     </div>

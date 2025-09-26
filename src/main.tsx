@@ -24,6 +24,9 @@ import Quote from "./Quote.tsx";
 import StockPrice from "./StockPrice.tsx";
 import WeatherTemp from "./WeatherApp/WeatherTemp.tsx";
 import WeatherAstro from "./WeatherApp/WeatherAstro.tsx";
+import WeatherVis from "./WeatherApp/WeatherVis.tsx";
+import WeatherPrecip from "./WeatherApp/WeatherPrecip.tsx";
+import WeatherWind from "./WeatherApp/WeatherWind.tsx";
 
 const queryClient = new QueryClient();
 
@@ -53,6 +56,8 @@ createRoot(document.getElementById("root")!).render(
           <Route path="/stocks" element={<StockPrice />} />
           <Route path="/weathertemp/:city" element={<WeatherTemp />} />
           <Route path="/weatherastro/:city" element={<WeatherAstro />} />
+          <Route path="/weathervis/:city" element={<WeatherVis />} />
+          <Route path="/weatherprecip/:city" element={<WeatherPrecip />} />
         </Routes>
       </BrowserRouter>
     </QueryClientProvider>

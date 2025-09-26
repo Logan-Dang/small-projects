@@ -1,15 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FcHome } from "react-icons/fc";
 import { handleSearch, useWeather } from "./WeatherHandlers.tsx";
 import SearchDisplay from "./SearchDisplay.tsx";
 import { Link } from "react-router";
+import WeatherLogo from "./WeatherLogo.tsx";
 
 export default function WeatherApp() {
-  const [city, setCity] = useState("San Diego");
+  const [city, setCity] = useState(() => {
+    // ✅ Initialize from localStorage or fallback
+    return localStorage.getItem("weatherCity") || "San Diego";
+  });
   const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
   const [searchResults, setSearchResults] = useState<any[]>([]);
 
   const weather = useWeather(city, API_KEY); // ✅ fetch handled in hook
+
+  useEffect(() => {
+    localStorage.setItem("weatherCity", city);
+  }, [city]);
 
   return (
     <div
@@ -63,6 +71,26 @@ export default function WeatherApp() {
         >
           Astronomy
         </Link>
+        <Link
+          to={`/weathervis/${city}`}
+          style={{ fontSize: "25px", color: "white", marginBottom: "10px" }}
+        >
+          Visual/Dewpoint
+        </Link>
+      </div>
+      <div
+        style={{
+          display: "flex",
+          gap: "16px",
+          textDecoration: "underline",
+        }}
+      >
+        <Link
+          to={`/weatherprecip/${city}`}
+          style={{ fontSize: "25px", color: "white", marginBottom: "10px" }}
+        >
+          Precipitation/Pressure/Snow
+        </Link>
       </div>
 
       <a href="/homepage" style={{ textDecoration: "none", color: "inherit" }}>
@@ -78,6 +106,7 @@ export default function WeatherApp() {
           <span style={{ fontSize: "18px" }}>Home</span>
         </div>
       </a>
+      <WeatherLogo />
     </div>
   );
 }

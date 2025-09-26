@@ -2,6 +2,7 @@ import { WiHumidity, WiThermometer } from "react-icons/wi";
 import { useWeather } from "./WeatherHandlers.tsx";
 import { TbArrowBackUp } from "react-icons/tb";
 import { useParams } from "react-router";
+import WeatherLogo from "./WeatherLogo.tsx";
 
 export default function WeatherTemp() {
   const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
@@ -64,7 +65,7 @@ export default function WeatherTemp() {
             💧 Chance of Rain:{" "}
             {weather.data.forecast.forecastday[0].day.daily_chance_of_rain}%
           </p>
-          <img src={weather.data.current.condition.icon} alt="weather icon" />
+          <WeatherLogo />
         </div>
       )}
     </div>

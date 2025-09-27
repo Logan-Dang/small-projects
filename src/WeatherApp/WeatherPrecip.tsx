@@ -51,7 +51,7 @@ export default function WeatherPrecip() {
             Chance of snow:{" "}
             {weather.data.forecast.forecastday[0].hour[0].chance_of_snow}%
           </p>
-          <WeatherLogo />
+          <WeatherLogo icon={weather.data?.current?.condition?.icon} />
         </div>
       )}
     </div>

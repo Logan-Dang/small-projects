@@ -9,6 +9,25 @@ export default function WeatherWind() {
   const { city } = useParams<{ city: string }>();
   const weather = useWeather(city ?? "San Diego", API_KEY);
 
+  const windDirectionMap: Record<string, string> = {
+    N: "North",
+    NNE: "North-Northeast",
+    NE: "Northeast",
+    ENE: "East-Northeast",
+    E: "East",
+    ESE: "East-Southeast",
+    SE: "Southeast",
+    SSE: "South-Southeast",
+    S: "South",
+    SSW: "South-Southwest",
+    SW: "Southwest",
+    WSW: "West-Southwest",
+    W: "West",
+    WNW: "West-Northwest",
+    NW: "Northwest",
+    NNW: "North-Northwest",
+  };
+
   return (
     <div>
       {weather.status === "empty" && <p>Enter a city to see the weather.</p>}
@@ -44,8 +63,15 @@ export default function WeatherWind() {
             Wind speed: {weather.data.current.wind_mph} mph /{" "}
             {weather.data.current.wind_kph} kph
           </p>
-          <p>Gust speed: {}</p>
-          <WeatherLogo />
+          <p>
+            🌬 The wind is blowing from:{" "}
+            {windDirectionMap[weather.data?.current.wind_dir] || "Unknown"}
+          </p>
+          <p>
+            Gust speed: {weather.data?.current.gust_mph} mph /{" "}
+            {weather.data?.current.gust_kph} kph
+          </p>
+          <WeatherLogo icon={weather.data?.current?.condition?.icon} />
         </div>
       )}
     </div>

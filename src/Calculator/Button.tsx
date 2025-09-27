@@ -1,5 +1,4 @@
 type Props = {
-  // What is a type?
   value: string;
   state: {
     num1: string;
@@ -8,7 +7,7 @@ type Props = {
     result: number | null;
   };
   setState: {
-    setNum1: (val: string | ((prev: string) => string)) => void; // I don't understand this syntax
+    setNum1: (val: string | ((prev: string) => string)) => void;
     setNum2: (val: string | ((prev: string) => string)) => void;
     setOp: (op: string | null) => void;
     setResult: (res: number | null) => void;
@@ -31,16 +30,6 @@ export default function Button({ value, state, setState, handlers }: Props) {
   if (["+", "-", "x", "/"].includes(value)) {
     return <button onClick={() => setOp(value)}>{value}</button>;
   }
-  if (/[0-9]/.test(value)) {
-    // What is /[0-9]/.test(value) mean?
-    return (
-      <button
-        onClick={() => handlers.handleNumClick(value, op, setNum1, setNum2)} // Why are many perameters givin when handleNumClick only asks for two
-      >
-        {value}
-      </button>
-    );
-  }
   if (value === "AC") {
     return (
       <button
@@ -50,7 +39,149 @@ export default function Button({ value, state, setState, handlers }: Props) {
       </button>
     );
   }
+  if (value === "⌫") {
+    return (
+      <button
+        onClick={() =>
+          handlers.handleBackspace(op, setNum1, setNum2, num1, num2)
+        }
+      >
+        {value}
+      </button>
+    );
+  }
+  if (value === "%") {
+    return (
+      <button onClick={() => handlers.handle100(op, num1, num2, setResult)}>
+        {value}
+      </button>
+    );
+  }
 
+  if (value === "+/-") {
+    return (
+      <button
+        onClick={() =>
+          handlers.handlePlusMinus(op, setNum1, setNum2, num1, num2)
+        }
+      >
+        {value}
+      </button>
+    );
+  }
+
+  if (value === "log10") {
+    return (
+      <button
+        onClick={() => handlers.handleLog10(op, setNum1, setNum2, num1, num2)}
+      >
+        {value}
+      </button>
+    );
+  }
+
+  if (value === "ln") {
+    return (
+      <button
+        onClick={() => handlers.handleLn(op, setNum1, setNum2, num1, num2)}
+      >
+        {value}
+      </button>
+    );
+  }
+
+  if (value === "cos") {
+    return (
+      <button
+        onClick={() => handlers.handleCos(op, setNum1, setNum2, num1, num2)}
+      >
+        {value}
+      </button>
+    );
+  }
+
+  if (value === "sin") {
+    return (
+      <button
+        onClick={() => handlers.handleSin(op, setNum1, setNum2, num1, num2)}
+      >
+        {value}
+      </button>
+    );
+  }
+
+  if (value === "π") {
+    return (
+      <button onClick={() => handlers.handlePi(op, setNum1, setNum2)}>
+        {value}
+      </button>
+    );
+  }
+
+  if (value === "⅟x") {
+    return (
+      <button
+        onClick={() =>
+          handlers.handleFraction(op, setNum1, setNum2, num1, num2)
+        }
+      >
+        {value}
+      </button>
+    );
+  }
+
+  if (value === "x²") {
+    return (
+      <button
+        onClick={() => handlers.handlePowers(op, setNum1, setNum2, num1, num2)}
+      >
+        {value}
+      </button>
+    );
+  }
+
+  if (value === "x!") {
+    return (
+      <button
+        onClick={() =>
+          handlers.handleFactorial(op, setNum1, setNum2, num1, num2)
+        }
+      >
+        {value}
+      </button>
+    );
+  }
+
+  if (value === "√") {
+    return (
+      <button
+        onClick={() => handlers.handleSqrt(op, setNum1, setNum2, num1, num2)}
+      >
+        {value}
+      </button>
+    );
+  }
+
+  if (value === ".") {
+    return (
+      <button
+        onClick={() => handlers.handleDecimal(op, num1, num2, setNum1, setNum2)}
+      >
+        {value}
+      </button>
+    );
+  }
+
+  if (/[0-9]/.test(value)) {
+    // What is /[0-9]/.test(value) mean?
+    return (
+      <button
+        onClick={() => handlers.handleNumClick(value, op, setNum1, setNum2)}
+      >
+        {value}
+      </button>
+    );
+  }
   // default
   return <button>{value}</button>;
 }

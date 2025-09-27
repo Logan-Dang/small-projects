@@ -91,6 +91,12 @@ export default function WeatherApp() {
         >
           Precipitation/Pressure/Snow
         </Link>
+        <Link
+          to={`/weatherwind/${city}`}
+          style={{ fontSize: "25px", color: "white", marginBottom: "10px" }}
+        >
+          Wind/Gust speeds
+        </Link>
       </div>
 
       <a href="/homepage" style={{ textDecoration: "none", color: "inherit" }}>
@@ -106,7 +112,7 @@ export default function WeatherApp() {
           <span style={{ fontSize: "18px" }}>Home</span>
         </div>
       </a>
-      <WeatherLogo />
+      <WeatherLogo icon={weather.data?.current?.condition?.icon} />
     </div>
   );
 }

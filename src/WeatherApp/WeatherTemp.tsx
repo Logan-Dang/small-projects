@@ -65,7 +65,7 @@ export default function WeatherTemp() {
             💧 Chance of Rain:{" "}
             {weather.data.forecast.forecastday[0].day.daily_chance_of_rain}%
           </p>
-          <WeatherLogo />
+          <WeatherLogo icon={weather.data?.current?.condition?.icon} />
         </div>
       )}
     </div>

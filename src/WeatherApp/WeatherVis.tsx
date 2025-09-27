@@ -61,7 +61,7 @@ export default function WeatherVis() {
             Dew Point: {weather.data.current.dewpoint_f}°F /{" "}
             {weather.data.current.dewpoint_c}°C
           </p>
-          <WeatherLogo />
+          <WeatherLogo icon={weather.data?.current?.condition?.icon} />
         </div>
       )}
     </div>

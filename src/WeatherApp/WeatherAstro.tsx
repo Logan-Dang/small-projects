@@ -1,6 +1,7 @@
 import { useParams } from "react-router";
 import { useWeather } from "./WeatherHandlers";
 import { TbArrowBackUp } from "react-icons/tb";
+import WeatherLogo from "./WeatherLogo";
 
 export default function DisplayAstro() {
   const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
@@ -16,10 +17,10 @@ export default function DisplayAstro() {
 
       {weather.status === "success" && (
         <div>
-          <h1>
+          <h2>
             {weather.data.location.name}, {weather.data.location.region},{" "}
             {weather.data.location.country}
-          </h1>
+          </h2>
           <a
             href="/weatherapp"
             style={{ textDecoration: "none", color: "inherit" }}
@@ -36,7 +37,8 @@ export default function DisplayAstro() {
               <span style={{ fontSize: "18px" }}>Back</span>
             </div>
           </a>
-
+          <p>Local Time Estimate: {weather.data.location.localtime}</p>
+          <p>Last Updated: {weather.data.current.last_updated}</p>
           <p>
             🌅 Sunrise: {weather.data.forecast.forecastday[0].astro.sunrise}
           </p>
@@ -63,6 +65,7 @@ export default function DisplayAstro() {
             🌑 Moon Phase:{" "}
             {weather.data.forecast.forecastday[0].astro.moon_phase}
           </p>
+          <WeatherLogo icon={weather.data?.current?.condition?.icon} />
         </div>
       )}
     </div>

@@ -1,17 +1,13 @@
-import { useParams } from "react-router";
-import { useWeather } from "./WeatherHandlers";
+type WeatherLogoProps = {
+  icon?: string;
+};
 
-export default function WetaherLogo() {
-  const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
-  const { city } = useParams<{ city: string }>();
-  const weather = useWeather(city ?? "San Diego", API_KEY);
+export default function WeatherLogo({ icon }: WeatherLogoProps) {
+  if (!icon) return null;
 
   return (
     <div>
-      <img
-        src={`https:${weather.data?.current.condition.icon}`}
-        alt="weather icon"
-      />
+      <img src={`https:${icon}`} alt="weather icon" />
     </div>
   );
 }

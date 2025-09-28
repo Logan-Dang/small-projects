@@ -15,23 +15,21 @@ import { AiOutlineStock } from "react-icons/ai";
 export default function HomePage() {
   function NavLink(href: string, Icon: React.ElementType, label: string) {
     return (
-      <li>
-        <a href={href} style={{ textDecoration: "none", color: "inherit" }}>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              alignItems: "center",
-              cursor: "pointer",
-              justifyContent: "center",
-              marginBottom: "10px",
-            }}
-          >
-            <Icon size={20} />
-            <span style={{ fontSize: "18px", marginLeft: "5px" }}>{label}</span>
-          </div>
-        </a>
-      </li>
+      <a href={href} style={{ textDecoration: "none", color: "inherit" }}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            cursor: "pointer",
+            justifyContent: "center",
+            marginBottom: "10px",
+          }}
+        >
+          <Icon size={20} />
+          <span style={{ fontSize: "18px", marginLeft: "5px" }}>{label}</span>
+        </div>
+      </a>
     );
   }
 
@@ -52,19 +50,28 @@ export default function HomePage() {
           <span style={{ fontSize: "18px" }}>Sign Out</span>
         </div>
       </a>
-      <ul>
-        {NavLink("/unitconverter", SiConvertio, "Unit Converter")}
-        {NavLink("/calculator", FcCalculator, "Calculator")}
-        {NavLink("/todos", FaListCheck, "To-Do List")}
-        {NavLink("/tictactoe", GiTicTacToe, "Tic-Tac-Toe")}
-        {NavLink("/jokes", FaLaughSquint, "Jokes Page")}
-        {NavLink("/weatherapp", SiTheweatherchannel, "Weather App")}
-        {NavLink("/calendar", FaCalendarAlt, "Calendar")}
-        {NavLink("/word", FaFileWord, "Word Counter")}
-        {/* {NavLink("/stopwatch", FaStopwatch, "Stop Watch")} */}
-        {NavLink("/quote", LuMessageSquareQuote, "Motivational Quotes")}
-        {NavLink("/stocks", AiOutlineStock, "Stock Prices")}
-      </ul>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <ul>
+          {NavLink("/unitconverter", SiConvertio, "Unit Converter")}
+          {NavLink("/calculator", FcCalculator, "Calculator")}
+          {NavLink("/todos", FaListCheck, "To-Do List")}
+          {NavLink("/tictactoe", GiTicTacToe, "Tic-Tac-Toe")}
+          {NavLink("/jokes", FaLaughSquint, "Jokes Page")}
+          {NavLink("/weatherapp", SiTheweatherchannel, "Weather App")}
+          {NavLink("/calendar", FaCalendarAlt, "Calendar")}
+          {NavLink("/word", FaFileWord, "Word Counter")}
+          {NavLink("/stopwatch", FaStopwatch, "Stop Watch")}
+          {NavLink("/quote", LuMessageSquareQuote, "Motivational Quotes")}
+          {NavLink("/stocks", AiOutlineStock, "Stock Prices")}
+        </ul>
+      </div>
     </div>
   );
 }

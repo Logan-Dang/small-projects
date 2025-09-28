@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FcHome } from "react-icons/fc";
+import HomeLogo from "./HomeLogo";
 
 export default function Calendar() {
   const [year, setYear] = useState<number>(2025); // Year is a number
@@ -38,19 +38,7 @@ export default function Calendar() {
   return (
     <div style={{ padding: "20px", fontFamily: "sans-serif" }}>
       <h1>Calendar</h1>
-      <a href="/homepage" style={{ textDecoration: "none", color: "inherit" }}>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            cursor: "pointer",
-          }}
-        >
-          <FcHome size={40} />
-          <span style={{ fontSize: "18px" }}>Home</span>
-        </div>
-      </a>
+      <HomeLogo />
 
       <div style={{ display: "flex", gap: "10px", marginBottom: "16px" }}>
         <input

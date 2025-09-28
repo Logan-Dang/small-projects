@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import HomeLogo from "./HomeLogo";
 
 export default function Joke() {
   // Setting varables
@@ -71,7 +72,7 @@ export default function Joke() {
           Refresh Joke
         </button>
 
-        <a href="/homepage">Go home</a>
+        <HomeLogo />
       </div>
     </div>
   );

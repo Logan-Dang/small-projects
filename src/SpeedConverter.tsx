@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { FcHome } from "react-icons/fc";
+import HomeLogo from "./HomeLogo";
 
 export default function SpeedConverter() {
   const [num, setNum] = useState("");
@@ -39,19 +40,7 @@ export default function SpeedConverter() {
     >
       <h1>Speed Converter</h1>
 
-      <a href="/homepage" style={{ textDecoration: "none", color: "inherit" }}>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            cursor: "pointer",
-          }}
-        >
-          <FcHome size={40} />
-          <span style={{ fontSize: "18px" }}>Home</span>
-        </div>
-      </a>
+      <HomeLogo />
 
       <input
         onChange={(e) => setNum(e.target.value)}

@@ -11,17 +11,17 @@ import Todos from "./Todos.tsx";
 import Todos6 from "./Todos6.tsx";
 import HomePage from "./HomePage.tsx";
 import ForgotPasscode from "./ForgotPasscode.tsx";
-import { Weight } from "./Weight.tsx";
-import { UnitConverter } from "./UnitConverter";
+import Weight from "./Weight.tsx";
+import UnitConverter from "./UnitConverter";
 import Jokes from "./Jokes.tsx";
 import WeatherApp from "./WeatherApp/WeatherApp.tsx";
 import Calendar from "./Calendar.tsx";
 import SpeedConverter from "./SpeedConverter.tsx";
 import Word from "./Word.tsx";
-//import StopWatch from "./StopWatch.tsx";
+import StopWatch from "./StopWatch.tsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Quote from "./Quote.tsx";
-import StockPrice from "./StockPrice.tsx";
+import StockPrice from "./StockPrices/StockPrice.tsx";
 import WeatherTemp from "./WeatherApp/WeatherTemp.tsx";
 import WeatherAstro from "./WeatherApp/WeatherAstro.tsx";
 import WeatherVis from "./WeatherApp/WeatherVis.tsx";
@@ -51,7 +51,7 @@ createRoot(document.getElementById("root")!).render(
           <Route path="/calendar" element={<Calendar />} />
           <Route path="/speed" element={<SpeedConverter />} />
           <Route path="/word" element={<Word />} />
-          {/* <Route path="/stopwatch" element={<StopWatch />} /> */}
+          <Route path="/stopwatch" element={<StopWatch />} />
           <Route path="/quote" element={<Quote />} />
           <Route path="/stocks" element={<StockPrice />} />
           <Route path="/weathertemp/:city" element={<WeatherTemp />} />

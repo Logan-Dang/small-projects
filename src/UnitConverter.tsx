@@ -3,8 +3,9 @@ import { FaTemperatureLow } from "react-icons/fa6";
 import { GiWeightLiftingUp } from "react-icons/gi";
 import { FaMoneyCheckDollar } from "react-icons/fa6";
 import { IoMdSpeedometer } from "react-icons/io";
+import HomeLogo from "./HomeLogo";
 
-export const UnitConverter = () => {
+export default function UnitConverter() {
   return (
     <div
       style={{
@@ -16,7 +17,7 @@ export const UnitConverter = () => {
       }}
     >
       <h1>Unit Converter</h1>
-      <a href="/homepage">Go Home</a>
+      <HomeLogo />
       <nav>
         <ul>
           <li>
@@ -133,4 +134,4 @@ export const UnitConverter = () => {
       </nav>
     </div>
   );
-};
+}

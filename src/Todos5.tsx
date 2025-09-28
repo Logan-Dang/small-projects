@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import HomeLogo from "./HomeLogo";
 
 export default function Todos4() {
   const [amount, setAmount] = useState("");
@@ -51,7 +52,7 @@ export default function Todos4() {
       }}
     >
       <h1>Money Converter</h1>
-      <a href="/homepage">Go back to home</a>
+      <HomeLogo />
       <input
         type="number"
         placeholder="Enter amount"

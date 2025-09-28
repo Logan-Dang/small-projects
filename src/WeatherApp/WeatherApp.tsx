@@ -4,6 +4,7 @@ import { handleSearch, useWeather } from "./WeatherHandlers.tsx";
 import SearchDisplay from "./SearchDisplay.tsx";
 import { Link } from "react-router";
 import WeatherLogo from "./WeatherLogo.tsx";
+import HomeLogo from "../HomeLogo.tsx";
 
 export default function WeatherApp() {
   const [city, setCity] = useState(() => {
@@ -99,19 +100,7 @@ export default function WeatherApp() {
         </Link>
       </div>
 
-      <a href="/homepage" style={{ textDecoration: "none", color: "inherit" }}>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            cursor: "pointer",
-          }}
-        >
-          <FcHome size={40} />
-          <span style={{ fontSize: "18px" }}>Home</span>
-        </div>
-      </a>
+      <HomeLogo />
       <WeatherLogo icon={weather.data?.current?.condition?.icon} />
     </div>
   );

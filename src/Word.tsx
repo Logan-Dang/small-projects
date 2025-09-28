@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { FcHome } from "react-icons/fc";
+import HomeLogo from "./HomeLogo";
 
 export default function Word() {
   const [amount, setAmount] = useState(0);
@@ -25,19 +25,7 @@ export default function Word() {
       <h3>
         Enter a sentence and I will count how many words are in the sentence
       </h3>
-      <a href="/homepage" style={{ textDecoration: "none", color: "inherit" }}>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            cursor: "pointer",
-          }}
-        >
-          <FcHome size={40} />
-          <span style={{ fontSize: "18px" }}>Home</span>
-        </div>
-      </a>
+      <HomeLogo />
       <input
         type="text"
         onChange={(e) => {

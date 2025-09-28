@@ -1,4 +1,5 @@
 import { useState } from "react";
+import HomeLogo from "./HomeLogo";
 
 export const Todos = () => {
   const [tasks, setTasks] = useState<{ text: string; done: boolean }[]>([]);
@@ -18,7 +19,7 @@ export const Todos = () => {
       <h3>
         Add any item you would like to your list and I will keep track of it.
       </h3>
-      <a href="/homepage">Go back to home</a>
+      <HomeLogo />
 
       <div
         style={{

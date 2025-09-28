@@ -11,7 +11,7 @@ export default function WeatherApp() {
     // ✅ Initialize from localStorage or fallback
     return localStorage.getItem("weatherCity") || "San Diego";
   });
-  const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
+  const API_KEY = "import.meta.env.VITE_WEATHER_API_KEY";
   const [searchResults, setSearchResults] = useState<any[]>([]);
 
   const weather = useWeather(city, API_KEY); // ✅ fetch handled in hook

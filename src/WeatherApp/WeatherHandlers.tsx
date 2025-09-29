@@ -22,7 +22,7 @@ export const useWeather = (city: string, API_KEY: string) => {
     queryKey: ["weather", city],
     queryFn: () =>
       fetch(
-        `http://localhost:3000/weather?city=${encodeURIComponent(city)}`
+        `/.netlify/functions/weather?city=${encodeURIComponent(city)}`
       ).then((res) => res.json()),
     enabled: !!city,
   });

@@ -1,5 +1,8 @@
 [dev]
-  command = "vite"
-  port = 5714        # the port Netlify will serve through
-  targetPort = 5713  # the port Vite actually runs on
-  publish = "dist"
+command = "vite"
+targetPort = 5713 # the port Vite actually runs on
+publish = "dist"
+
+[build]
+command = "npm run build"
+publish = "dist"

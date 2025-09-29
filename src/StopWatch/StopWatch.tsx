@@ -1,9 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { FcHome } from "react-icons/fc";
-import { FaPlayCircle } from "react-icons/fa";
-import { FaPause } from "react-icons/fa6";
-import { RiResetLeftLine } from "react-icons/ri";
-import HomeLogo from "./HomeLogo.tsx";
+import Display from "./Display.tsx";
 
 export default function StopWatch() {
   const [elapsed, setElapsed] = useState(0);
@@ -72,37 +68,13 @@ export default function StopWatch() {
   };
 
   return (
-    <div style={{ textAlign: "center", marginTop: 24 }}>
-      <div className="circle">
-        <div className="orbit-wrapper">
-          <div
-            className={`orbit rotate-${Math.floor(elapsed / 1000) * 360}`}
-            style={{ rotate: `${Math.floor((elapsed / 3000) * 360)}deg` }}
-          >
-            <div className="ball"></div>
-          </div>
-        </div>
-      </div>
-
-      <h1>Stop Watch</h1>
-      <h2 style={{ fontSize: 36, margin: "16px 0" }}>{formatTime(elapsed)}</h2>
-
-      <div style={{ display: "flex", gap: 8, justifyContent: "center" }}>
-        {!isRunning ? (
-          <button onClick={handleStart}>
-            <FaPlayCircle />
-          </button>
-        ) : (
-          <button onClick={handleStop}>
-            <FaPause fill="white" />
-          </button>
-        )}
-        <button onClick={handleReset}>
-          <RiResetLeftLine fill="white" />
-        </button>
-      </div>
-
-      <HomeLogo />
-    </div>
+    <Display
+      elapsed={elapsed}
+      isRunning={isRunning}
+      handleStart={handleStart}
+      handleStop={handleStop}
+      handleReset={handleReset}
+      formatTime={formatTime}
+    />
   );
 }

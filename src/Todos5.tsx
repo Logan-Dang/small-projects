@@ -7,7 +7,7 @@ export default function Todos4() {
   const [toCurrency, setToCurrency] = useState("USD");
   const [result, setResult] = useState(0);
   const [rates, setRates] = useState<{ [key: string]: number }>({});
-  const API_KEY = "import.meta.env.VITE_MONEY_API_KEY";
+  const API_KEY = import.meta.env.VITE_MONEY_API_KEY;
   // Fetch rates when component loads
   useEffect(() => {
     fetch(`https://v6.exchangerate-api.com/v6/${API_KEY}/latest/USD`) // Fetches from this link

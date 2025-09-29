@@ -22,7 +22,7 @@ export const useWeather = (city: string, API_KEY: string) => {
     queryKey: ["weather", city],
     queryFn: () =>
       fetch(
-        `https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${city}&days=1`
+        `http://localhost:3000/weather?city=${encodeURIComponent(city)}`
       ).then((res) => res.json()),
     enabled: !!city,
   });

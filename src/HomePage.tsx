@@ -70,6 +70,7 @@ export default function HomePage() {
           {NavLink("/stopwatch", FaStopwatch, "Stop Watch")}
           {NavLink("/quote", LuMessageSquareQuote, "Motivational Quotes")}
           {NavLink("/stocks", AiOutlineStock, "Stock Prices")}
+          {NavLink("/stocks", AiOutlineStock, "Timer")}
         </ul>
       </div>
     </div>

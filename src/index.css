@@ -72,7 +72,7 @@ button:focus-visible {
   height: 200px;
   border: 4px solid #3b82f6; /* solid visible ring */
   border-radius: 50%;
-  margin: 100px auto;
+  margin: 50px auto;
 }
 
 /* wrapper to keep orbit centered */

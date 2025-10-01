@@ -14,7 +14,7 @@ export default function WeatherApp() {
   const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
   const [searchResults, setSearchResults] = useState<any[]>([]);
 
-  const weather = useWeather(city, API_KEY); // ✅ fetch handled in hook
+  const weather = useWeather(city); // ✅ fetch handled in hook
 
   useEffect(() => {
     localStorage.setItem("weatherCity", city);
@@ -36,7 +36,7 @@ export default function WeatherApp() {
         <input
           type="text"
           placeholder="Search for city..."
-          onChange={(e) => handleSearch(e, setSearchResults, API_KEY)}
+          onChange={(e) => handleSearch(e, setSearchResults)}
           style={{
             fontSize: "16px",
             padding: "8px",

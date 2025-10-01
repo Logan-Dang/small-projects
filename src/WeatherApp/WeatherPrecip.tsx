@@ -6,7 +6,7 @@ import { useWeather } from "./WeatherHandlers";
 export default function WeatherPrecip() {
   const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
   const { city } = useParams<{ city: string }>();
-  const weather = useWeather(city ?? "San Diego", API_KEY);
+  const weather = useWeather(city ?? "San Diego");
 
   return (
     <div>

@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import HomeLogo from "./HomeLogo";
 
 export default function Timer() {
   const [time, setTime] = useState(0);
@@ -48,15 +49,19 @@ export default function Timer() {
     <div style={{ textAlign: "center" }}>
       <h1>⏱ Timer</h1>
 
-      <input
-        type="number"
-        placeholder="Enter time (seconds)"
-        onChange={(e) => {
-          const val = e.target.valueAsNumber;
-          setTime(val);
-          setInitialTime(val);
-        }}
-      />
+      <div style={{ display: "flex", alignItems: "center" }}>
+        <input
+          type="number"
+          placeholder="Enter time (seconds)"
+          onChange={(e) => {
+            const val = e.target.valueAsNumber;
+            setTime(val);
+            setInitialTime(val);
+          }}
+          style={{ height: "25px" }}
+        />
+        <HomeLogo />
+      </div>
 
       <h2>{time} s</h2>
 
